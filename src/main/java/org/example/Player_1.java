@@ -25,7 +25,6 @@ public class Player_1 {
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)) {
             lastCity = in.readLine();
-//            System.out.println(lastCity);
             if (lastCity.equals("???")) {
                 System.out.println("Вы первый игрок\nВведите название города: ");
             } else {

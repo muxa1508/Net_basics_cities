@@ -6,16 +6,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class Server {
     public static void main(String[] args) {
         startServer();
-
     }
 
     protected static String lastCity = "???";
@@ -30,12 +25,10 @@ public class Server {
                      PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
                     System.out.println("New connection accepted");
-//                    System.out.println("Последний отправленный город: " + lastCity);
                     out.println(lastCity);
                     newCity = in.readLine();
                     if (lastCity.equals("???") & !lastCity.equals(newCity)) {
                         out.println("OK");
-//                        System.out.println("Новый введенный город: " + newCity);
                         lastCity = newCity;
                     } else {
                         char[] lastCityChars = lastCity.toLowerCase().toCharArray();
@@ -45,7 +38,6 @@ public class Server {
                         }
                         String lastCityLastChar = lastCityList.getLast();
 
-
                         char[] newCityChars = newCity.toLowerCase().toCharArray();
                         LinkedList<String> newCityList = new LinkedList<>();
                         for (char c : newCityChars) {
@@ -53,13 +45,8 @@ public class Server {
                         }
                         String newCityFirstChar = newCityList.getFirst();
 
-//                        System.out.println(lastCityLastChar);
-//
-//                        System.out.println(newCityFirstChar);
-
                         if (lastCityLastChar.equals(newCityFirstChar)) {
                             out.println("OK");
-//                            System.out.println("Новый введенный город: " + newCity);
                             lastCity = newCity;
                         } else {
                             out.println("NOT OK");
