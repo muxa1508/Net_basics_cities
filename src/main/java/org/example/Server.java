@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.LinkedList;
 
 public class Server {
     public static void main(String[] args) {
@@ -32,20 +31,12 @@ public class Server {
                         lastCity = newCity;
                     } else {
                         char[] lastCityChars = lastCity.toLowerCase().toCharArray();
-                        LinkedList<String> lastCityList = new LinkedList<>();
-                        for (char c : lastCityChars) {
-                            lastCityList.add(String.valueOf(c));
-                        }
-                        String lastCityLastChar = lastCityList.getLast();
+                        char lastCityLastChar = lastCityChars[lastCityChars.length - 1];
 
                         char[] newCityChars = newCity.toLowerCase().toCharArray();
-                        LinkedList<String> newCityList = new LinkedList<>();
-                        for (char c : newCityChars) {
-                            newCityList.add(String.valueOf(c));
-                        }
-                        String newCityFirstChar = newCityList.getFirst();
+                        char newCityFirstChar = newCityChars[0];
 
-                        if (lastCityLastChar.equals(newCityFirstChar)) {
+                        if (lastCityLastChar == newCityFirstChar) {
                             out.println("OK");
                             lastCity = newCity;
                         } else {
